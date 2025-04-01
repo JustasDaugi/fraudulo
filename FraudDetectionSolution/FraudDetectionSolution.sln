@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FraudDetection.Domain", "..\src\FraudDetection.Domain\FraudDetection.Domain.csproj", "{E945E28B-E420-4D9A-A8BD-5CCE26255EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FraudDetection.Application", "..\src\FraudDetection.Application\FraudDetection.Application.csproj", "{4D2EA7C7-9513-46CE-AA6A-71A2CA160EE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FraudDetection.Infrastructure", "..\src\FraudDetection.Infrastructure\FraudDetection.Infrastructure.csproj", "{7233B403-5BCF-4A4D-A13C-B7134B1D92D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FraudDetection.Console", "..\src\FraudDetection.Console\FraudDetection.Console.csproj", "{5DCDB80E-6EFA-49FD-B44F-2F6B0EBD43C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FraudDetection.Tests", "..\tests\FraudDetection.Tests\FraudDetection.Tests.csproj", "{0ECFA9DE-BF91-48E4-989F-E5523D869E1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E945E28B-E420-4D9A-A8BD-5CCE26255EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E945E28B-E420-4D9A-A8BD-5CCE26255EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E945E28B-E420-4D9A-A8BD-5CCE26255EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E945E28B-E420-4D9A-A8BD-5CCE26255EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2EA7C7-9513-46CE-AA6A-71A2CA160EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2EA7C7-9513-46CE-AA6A-71A2CA160EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2EA7C7-9513-46CE-AA6A-71A2CA160EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2EA7C7-9513-46CE-AA6A-71A2CA160EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7233B403-5BCF-4A4D-A13C-B7134B1D92D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7233B403-5BCF-4A4D-A13C-B7134B1D92D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7233B403-5BCF-4A4D-A13C-B7134B1D92D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7233B403-5BCF-4A4D-A13C-B7134B1D92D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DCDB80E-6EFA-49FD-B44F-2F6B0EBD43C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DCDB80E-6EFA-49FD-B44F-2F6B0EBD43C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DCDB80E-6EFA-49FD-B44F-2F6B0EBD43C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DCDB80E-6EFA-49FD-B44F-2F6B0EBD43C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ECFA9DE-BF91-48E4-989F-E5523D869E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ECFA9DE-BF91-48E4-989F-E5523D869E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ECFA9DE-BF91-48E4-989F-E5523D869E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ECFA9DE-BF91-48E4-989F-E5523D869E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
