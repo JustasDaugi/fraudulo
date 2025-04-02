@@ -14,8 +14,8 @@ This simple application is a rule-based fraud detection system built with C# and
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository_url>
-   cd <repository_folder>
+   git clone https://github.com/JustasDaugi/fraudulo.git
+   cd fraudulo
 
 2. Install .NET 8.0 SDK:
    ```bash
