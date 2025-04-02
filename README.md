@@ -19,7 +19,7 @@ This simple application is a rule-based fraud detection system built with C# and
 
 2. Install .NET 8.0 SDK:
    ```bash
-    https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-install?tabs=dotnet9&pivots=os-linux-ubuntu-2410
+    https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-install?tabs=dotnet8&pivots=os-linux-ubuntu-2410
 
 3. Build the Solution: From the app directory, run:
    ```bash
