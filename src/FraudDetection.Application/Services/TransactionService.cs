@@ -1,13 +1,13 @@
-using System.Collections.Generic;
 using FraudDetection.Domain.Entities;
 using FraudDetection.Domain.Repositories;
+using FraudDetection.Application.Utilities;
 
 namespace FraudDetection.Application.Services
 {
   public interface ITransactionService
   {
     IEnumerable<Transaction> FetchTransactions();
-    Transaction GetTransactionDetails(string transactionID);
+    IEnumerable<Transaction> FetchFraudulentTransactions();
   }
 
   public class TransactionService : ITransactionService
@@ -21,12 +21,13 @@ namespace FraudDetection.Application.Services
 
     public IEnumerable<Transaction> FetchTransactions()
     {
-      return _transactionRepository.GetAllTransactions();
+      return _transactionRepository.StreamAllTransactions();
     }
 
-    public Transaction GetTransactionDetails(string transactionID)
+    public IEnumerable<Transaction> FetchFraudulentTransactions()
     {
-      return _transactionRepository.GetById(transactionID);
+      var transactions = _transactionRepository.StreamAllTransactions().ToList();
+      return EvaluateFraud.FilterFraudulentTransactions(transactions);
     }
   }
 }
