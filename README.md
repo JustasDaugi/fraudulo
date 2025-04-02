@@ -17,7 +17,7 @@ This simple application is a rule-based fraud detection system built with C# and
    git clone https://github.com/JustasDaugi/fraudulo.git
    cd fraudulo
 
-2. Install .NET 8.0 SDK:
+2. Install .NET 8.0 SDK by opening this link and following the instructions:
    ```bash
     https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-install?tabs=dotnet8&pivots=os-linux-ubuntu-2410
 
