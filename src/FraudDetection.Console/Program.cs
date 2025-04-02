@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using FraudDetection.Domain.Repositories;
-using FraudDetection.Application.Services;
 using FraudDetection.Infrastructure.Repositories;
+using FraudDetection.Application.Utilities;
+using FraudDetection.Application.Services;
 
 namespace FraudDetection.Console
 {
@@ -16,20 +16,37 @@ namespace FraudDetection.Console
       services.AddTransient<ITransactionService, TransactionService>();
 
       using var provider = services.BuildServiceProvider();
+      var repository = provider.GetRequiredService<ITransactionRepository>();
 
-      var transactionService = provider.GetRequiredService<ITransactionService>();
-      foreach (var tx in transactionService.FetchTransactions())
-    //  Print additional columns
-      {
-        System.Console.WriteLine($"{tx.TransactionID} => {tx.TransactionAmount}");
-      }
+      var streamedTransactions = repository.StreamAllTransactions().ToList();
 
-      System.Console.WriteLine("\n-- Streaming Transactions --");
-      var repo = (CsvTransactionRepository)provider.GetRequiredService<ITransactionRepository>();
-      foreach (var streamedTx in repo.StreamAllTransactions())
+      System.Console.WriteLine("-- Streaming Suspicious Transactions --");
+      int count = 0;
+      foreach (var tx in streamedTransactions)
       {
-        System.Console.WriteLine($"{streamedTx.TransactionID} => {streamedTx.TransactionAmount}");
+        var accountTxs = streamedTransactions
+                          .Where(t => t.AccountID == tx.AccountID)
+                          .OrderBy(t => t.TransactionDate)
+                          .ToList();
+
+        var triggeredRules = EvaluateFraud.Evaluate(tx, accountTxs);
+        if (triggeredRules.Any())
+        {
+          System.Console.WriteLine($"TransactionID: {tx.TransactionID}");
+          System.Console.WriteLine($"  TransactionAmount: {tx.TransactionAmount}");
+          System.Console.WriteLine($"  AccountBalance: {tx.AccountBalance}");
+          System.Console.WriteLine($"  TransactionDuration: {tx.TransactionDuration}");
+          System.Console.WriteLine($"  LoginAttempts: {tx.CustomerProfile.LoginAttempts}");
+          System.Console.WriteLine($"  Device IPAddress: {tx.Device.IPAddress}");
+          foreach (var rule in triggeredRules)
+          {
+            System.Console.WriteLine("  -> " + rule);
+          }
+          System.Console.WriteLine("------------------------------------------------------");
+          count++;
+        }
       }
+      System.Console.WriteLine($"\nTotal suspicious transactions: {count}");
     }
   }
 }
