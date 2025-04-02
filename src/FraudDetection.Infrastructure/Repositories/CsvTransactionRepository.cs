@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
 using FraudDetection.Domain.Entities;
@@ -19,19 +16,10 @@ namespace FraudDetection.Infrastructure.Repositories
       Console.WriteLine($"CsvTransactionRepository using CSV file at: {_csvFilePath}");
     }
 
-    public IEnumerable<Transaction> GetAllTransactions()
-    {
-      if (!File.Exists(_csvFilePath))
-        throw new FileNotFoundException($"CSV file not found at {_csvFilePath}");
-
-      using var reader = new StreamReader(_csvFilePath);
-      using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-      return new List<Transaction>(csv.GetRecords<Transaction>());
-    }
 
     public Transaction? GetById(string transactionID)
     {
-      foreach (var tx in GetAllTransactions())
+      foreach (var tx in StreamAllTransactions())
       {
         if (tx.TransactionID.Equals(transactionID, StringComparison.OrdinalIgnoreCase))
           return tx;
